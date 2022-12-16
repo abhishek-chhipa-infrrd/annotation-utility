@@ -18,7 +18,15 @@
             <div class="doc-name"
                 [ngClass]="{corrected: i.isCorrected == 'true', notCorrected: i.isCorrected == 'False'}"
                 routerLink="/editing-page">
-                <fa-icon style="font-size: small; margin: 5px 5px;" [icon]="docCheck"></fa-icon>
+                
+                <!-- icon show issue -->
+                <fa-icon style="font-size: small; margin: 5px 5px;" 
+                [icon]="docCheck" *ngIf="i.isCorrected; else showThis"></fa-icon>
+                <ng-template #showThis>
+                    <fa-icon style="font-size: small; margin: 5px 5px;" 
+                    [icon]="docNotCheck" *ngIf="!i.isCorrected"></fa-icon>
+                </ng-template>
+                
                 <span class="center-span">
                     {{i.document_name}}
                 </span>
