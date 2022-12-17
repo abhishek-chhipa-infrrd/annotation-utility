@@ -2,8 +2,8 @@
 <div class="row">
     <div class="filter-bar">
         <div class="feilds">
-            <input class="dd" name="search" [(ngModel)]="searchText" type="text" placeholder="Search by filename">
-            <input class="dd" type="text" placeholder="select by date">
+            <input class="dd" name="search" [(ngModel)]="searchText" type="text" placeholder="Search by Filename">
+            <input class="dd2" type="text" placeholder="Select by Date">
             <button class="btn" type="submit" (click)="onClear()">Clear</button>
         </div>
     </div>
@@ -20,11 +20,15 @@
                 routerLink="/editing-page">
                 
                 <!-- icon show issue -->
-                <fa-icon style="font-size: small; margin: 5px 5px;" 
-                [icon]="docCheck" *ngIf="i.isCorrected; else showThis"></fa-icon>
+
+                <div *ngIf="i.isCorrected=='true'; then thenblock else showThis"></div>
+
+                <ng-template #thenblock>
+                <fa-icon style="font-size: small; margin: 5px 5px;"  [icon]="docCheck" ></fa-icon>
+                </ng-template>
+        
                 <ng-template #showThis>
-                    <fa-icon style="font-size: small; margin: 5px 5px;" 
-                    [icon]="docNotCheck" *ngIf="!i.isCorrected"></fa-icon>
+                    <fa-icon style="font-size: small; margin: 5px 5px;" [icon]="docNotCheck"></fa-icon>
                 </ng-template>
                 
                 <span class="center-span">
