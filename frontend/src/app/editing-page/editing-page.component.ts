@@ -77,6 +77,10 @@ export class EditingPageComponent implements AfterViewInit
   options_strings:string[][] = []; 
   option_string_id:number[][] = []; 
   checkbox_id:number[][] = [];
+
+  header_checkbox:number = 0;
+  header_fields:number = 1;
+
   
   constructor(private apiData: ApiDataService, private router:Router, private location:PlatformLocation, private toast:NgToastService)
   {
@@ -114,6 +118,7 @@ export class EditingPageComponent implements AfterViewInit
       }
     });
   }
+///////////////////////////////////////////////////// Common ///////////////////////////////////////////////////////////////////
 
   ngAfterViewInit(): void 
   {
@@ -125,6 +130,7 @@ export class EditingPageComponent implements AfterViewInit
       this.viewport_token_cord_adjuster();
       }, 1000);
   }
+
 
   token_extractor_from_grouping(data:any)
   {
@@ -266,6 +272,8 @@ export class EditingPageComponent implements AfterViewInit
   {
     data.stroke = '';
   }
+
+///////////////////////////////////////////////////// Field ///////////////////////////////////////////////////////////////////
 
   kvp_label_initialization()
   {
@@ -1020,7 +1028,30 @@ export class EditingPageComponent implements AfterViewInit
       this.entity_connector_line.position();
     }
   }
+///////////////////////////////////////////////////// Checkbox ///////////////////////////////////////////////////////////////////
 
+  
+ 
+
+enable_border_fields(fields_border:any, checkboxes_border:any)
+{
+fields_border.style.borderBottom = "7px solid #39a87a";
+checkboxes_border.style.borderBottom = "none";
+this.header_fields = 1;
+this.header_checkbox = 0;
+}
+
+enable_border_checkboxes(fields_border:any, checkboxes_border:any)
+{
+checkboxes_border.style.borderBottom = "7px solid #39a87a";
+fields_border.style.borderBottom = "none";
+this.header_fields = 0;
+this.header_checkbox = 1;
+}
+
+
+
+///////////////////////////////////////////////////// Common ///////////////////////////////////////////////////////////////////
   save_all_data(condition: number) 
   {
     if (this.question_entity_strings.find((element) => element == '') !=undefined ||
