@@ -286,8 +286,6 @@ svg {
   align-items: center;
 }
 
-
-
 .page-right-section-mid-fields {
   height: 70%;
   width: 100%;
@@ -393,7 +391,8 @@ svg {
   border-bottom: 2px solid black;
 }
 
-.add_button{
+.add_button
+{
   height: 60%;
   width: 12%;
   position: absolute;
@@ -416,10 +415,47 @@ svg {
   top: 20%;
 }
 
+.question_option_set{
+  height: 30%;
+  width: 80%;
+  position: relative;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 1px solid grey;
+  overflow-y: auto;
+}
 
+.question{
+  height: 20%;
+  width: 100%;
+  border: none;
+  /* border-bottom: 1px solid grey; */
+  font-size:1rem;
+}
 
+.checkbox_option{
+  height: 30%;
+  width: 100%;
+  position: relative;
+  margin-bottom:2%;
+}
 
+.checkbox_strings{
+  height: 100%;
+  width: 85%;
+  border: 1px solid green;
+  position: absolute;
+  left: 1%;
+}
 
+.actual_checkbox{
+  height: 100%;
+  width: 8%;
+  position: absolute;
+  top:0%;
+  left: 90%;
+}
 
 .page-right-section-bottom {
   height: 10%;

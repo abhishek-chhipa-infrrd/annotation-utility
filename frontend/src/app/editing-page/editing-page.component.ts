@@ -68,9 +68,8 @@ export class EditingPageComponent implements AfterViewInit
   display_answer:number=0;
   display_header:number=0;
   display_other:number=0;
-
-
-  // checkbox related variables
+ 
+//******************** checkbox related variables *********************
   checkbox_question_string:string[] = [];
   checkbox_question_id:number[][] = [];
 
@@ -1028,30 +1027,43 @@ export class EditingPageComponent implements AfterViewInit
       this.entity_connector_line.position();
     }
   }
-///////////////////////////////////////////////////// Checkbox ///////////////////////////////////////////////////////////////////
-
-  
- 
+////////////////////////////////Checkbox ///////////////////////////////////////////////////
 
 enable_border_fields(fields_border:any, checkboxes_border:any)
 {
-fields_border.style.borderBottom = "7px solid #39a87a";
-checkboxes_border.style.borderBottom = "none";
-this.header_fields = 1;
-this.header_checkbox = 0;
+  fields_border.style.borderBottom = "7px solid #39a87a";
+  checkboxes_border.style.borderBottom = "none";
+  this.header_fields = 1;
+  this.header_checkbox = 0;
 }
 
 enable_border_checkboxes(fields_border:any, checkboxes_border:any)
 {
-checkboxes_border.style.borderBottom = "7px solid #39a87a";
-fields_border.style.borderBottom = "none";
-this.header_fields = 0;
-this.header_checkbox = 1;
+  checkboxes_border.style.borderBottom = "7px solid #39a87a";
+  fields_border.style.borderBottom = "none";
+  this.header_fields = 0;
+  this.header_checkbox = 1;
+}
+
+add_checkbox()
+{
+  // checkbox_question_string:string[] = ["Type of Data", "Gender"];
+  // checkbox_question_id:number[][] = [[1, 2, 3], [4]];
+
+  // options_strings:string[][] = [['a', 'b', 'c'], ['male', 'female', 'vikas']]; 
+  // option_string_id:number[][] = [[5, 6, 7], [8, 9, 10]];
+  // checkbox_id:number[][] = [[1, 2, 3], [5, 6, 7]];
+
+  this.checkbox_question_string.push("");
+  this.checkbox_question_id.push([]);
+
+  this.options_strings.push([""]);
+  this.option_string_id.push([]);
+  this.checkbox_id.push([]);
 }
 
 
-
-///////////////////////////////////////////////////// Common ///////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////// Common //////////////////////////////////////////////
   save_all_data(condition: number) 
   {
     if (this.question_entity_strings.find((element) => element == '') !=undefined ||

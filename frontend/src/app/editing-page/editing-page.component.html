@@ -134,13 +134,20 @@
       <!--****************** end of displaying other *******************-->
     </div>
 
-<!-- (click)="add_checkbox()" -->
-
+<!--************************** checkbox section************************************* --> 
 <div class="page-right-section-top-checkbox" *ngIf="header_checkbox">
-  <div class="add_button">+Add</div>
+  <div class="add_button" (click)="add_checkbox()">+Add</div>
  </div>
 
-    <div class="page-right-section-mid-checkbox" *ngIf="header_checkbox"></div>
+<div class="page-right-section-mid-checkbox" *ngIf="header_checkbox">
+  <div class="question_option_set" *ngFor="let i of checkbox_question_string; let in=index;">
+    <input class="question" value={{i}} placeholder="Select Checkbox Question">
+     <div class="checkbox_option" *ngFor="let j of options_strings[in]">
+       <input class="checkbox_strings" value={{j}} placeholder="Select Checkbox String">
+       <input class="actual_checkbox" placeholder="0/1">
+     </div>
+   </div>
+</div>
     
     <div class="page-right-section-bottom">
       <button  (click)="save_all_data(0)" class="save-and-exit">Save and Exit</button>
