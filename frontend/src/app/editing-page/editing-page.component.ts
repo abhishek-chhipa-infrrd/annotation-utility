@@ -20,7 +20,6 @@ export class EditingPageComponent implements AfterViewInit
   @ViewChild('custom_other_input_ref') custom_other_input_ref: any;
   @ViewChild('display_entity_rect_ref') display_entity_rect_ref: any;
   
-
   imageUrl:any;
   doc_id:any;
 
@@ -70,6 +69,15 @@ export class EditingPageComponent implements AfterViewInit
   display_header:number=0;
   display_other:number=0;
 
+
+  // checkbox related variables
+  checkbox_question_string:string[] = [];
+  checkbox_question_id:number[][] = [];
+
+  options_strings:string[][] = []; 
+  option_string_id:number[][] = []; 
+  checkbox_id:number[][] = [];
+  
   constructor(private apiData: ApiDataService, private router:Router, private location:PlatformLocation, private toast:NgToastService)
   {
     this.apiData.docData = window.sessionStorage.getItem('global_doc_id');
@@ -83,18 +91,18 @@ export class EditingPageComponent implements AfterViewInit
         console.log(data)    
         this.image_src = data[0].imagePath;
 
-        if(data[0].Type == 'checkboxes'){
-          this.api_result=JSON.parse(JSON.stringify((data[0].Data.ocrData)));
+        if(data[0].type == 'checkboxes')
+        {
+          // this.api_result=JSON.parse(JSON.stringify((data[0].Data.ocrData)));
           this.token_extractor_from_grouping(JSON.parse(JSON.stringify((data[0].Data.ocrData))));
+          // this.kvp_label_initialization();
+        }
+        else
+        {
+          this.api_result=JSON.parse(JSON.stringify((data[0].Data.kvpData.form)));
+          this.token_extractor_from_grouping(JSON.parse(JSON.stringify((data[0].Data.kvpData.form))));
           this.kvp_label_initialization();
-      }
-      else{
-
-        this.api_result=JSON.parse(JSON.stringify((data[0].Data.kvpData.form)));
-        this.token_extractor_from_grouping(JSON.parse(JSON.stringify((data[0].Data.kvpData.form))));
-        this.kvp_label_initialization();
-
-      }
+        }
     });
 
      
@@ -174,7 +182,6 @@ export class EditingPageComponent implements AfterViewInit
     this.l = this.image_height;
     this.c = this.image_width;
   }
-
 
   viewport_token_cord_adjuster()
   {
@@ -458,7 +465,6 @@ export class EditingPageComponent implements AfterViewInit
       }
       else
       {
-        // need to add string in inpt and index in array
         if (this.selected_input_type == 'ch')
         {
           this.used_token_map.set(token_id, 1);
@@ -484,6 +490,38 @@ export class EditingPageComponent implements AfterViewInit
           this.custom_input_array1.push(token_id);
         }
       }
+    }
+  }
+  
+  display_category_label(type:string)
+  {
+    if(type=='q')
+    {
+      if(this.display_question==0) 
+       this.display_question=1;
+      else
+      this.display_question=0; 
+    }
+    else if(type=='a')
+    {
+      if(this.display_answer==0) 
+       this.display_answer=1;
+      else
+      this.display_answer=0;
+    }
+    else if(type=='h')
+    {
+      if(this.display_header==0) 
+       this.display_header=1;
+      else
+      this.display_header=0;
+    }
+    else
+    {
+      if(this.display_other==0) 
+       this.display_other=1;
+      else
+      this.display_other=0;
     }
   }
   
@@ -888,6 +926,100 @@ export class EditingPageComponent implements AfterViewInit
       this.other_entity_ids.splice(index, 1);
     }
   }
+  
+  entity_click(type: string, index: number, entity_ref: any)
+  {
+    var x = 99999,
+      y = 99999,
+      x2 = -1,
+      y2 = -1;
+    if (type == 'q') 
+    {
+      for (let i = 0; i < this.question_entity_ids[index].length; i++) 
+      {
+        if(x>this.token_cord_for_image[this.question_entity_ids[index][i]].box[0])
+          x=this.token_cord_for_image[this.question_entity_ids[index][i]].box[0];
+        if(y>this.token_cord_for_image[this.question_entity_ids[index][i]].box[1])
+          y=this.token_cord_for_image[this.question_entity_ids[index][0]].box[1];
+        if(x2<this.token_cord_for_image[this.question_entity_ids[index][i]].box[2])
+          x2 =this.token_cord_for_image[this.question_entity_ids[index][i]].box[2];
+        if(y2 <this.token_cord_for_image[this.question_entity_ids[index][i]].box[3])
+          y2 =this.token_cord_for_image[this.question_entity_ids[index][i]].box[3];
+      }
+    }
+    else if (type == 'a') 
+    {
+      for (let i = 0; i < this.answer_entity_ids[index].length; i++) 
+      {
+        if(x>this.token_cord_for_image[this.answer_entity_ids[index][i]].box[0])
+          x = this.token_cord_for_image[this.answer_entity_ids[index][i]].box[0];
+        if(y>this.token_cord_for_image[this.answer_entity_ids[index][i]].box[1])
+          y=this.token_cord_for_image[this.answer_entity_ids[index][0]].box[1];
+        if(x2<this.token_cord_for_image[this.answer_entity_ids[index][i]].box[2])
+          x2 =this.token_cord_for_image[this.answer_entity_ids[index][i]].box[2];
+        if(y2<this.token_cord_for_image[this.answer_entity_ids[index][i]].box[3])
+          y2=this.token_cord_for_image[this.answer_entity_ids[index][i]].box[3];
+      }
+    }
+    else if (type == 'h') 
+    {
+      for (let i = 0; i < this.header_entity_ids[index].length; i++)
+      {
+        if (x > this.token_cord_for_image[this.header_entity_ids[index][i]].box[0])
+          x = this.token_cord_for_image[this.header_entity_ids[index][i]].box[0];
+        if (y > this.token_cord_for_image[this.header_entity_ids[index][i]].box[1])
+          y = this.token_cord_for_image[this.header_entity_ids[index][0]].box[1];
+        if (x2 < this.token_cord_for_image[this.header_entity_ids[index][i]].box[2])
+          x2 = this.token_cord_for_image[this.header_entity_ids[index][i]].box[2];
+        if(y2 < this.token_cord_for_image[this.header_entity_ids[index][i]].box[3])
+          y2 =this.token_cord_for_image[this.header_entity_ids[index][i]].box[3];
+      }
+    }
+    else
+    {
+      for (let i = 0; i < this.other_entity_ids[index].length; i++) 
+      {
+        if (x > this.token_cord_for_image[this.other_entity_ids[index][i]].box[0])
+          x = this.token_cord_for_image[this.other_entity_ids[index][i]].box[0];
+        if (y > this.token_cord_for_image[this.other_entity_ids[index][i]].box[1])
+          y = this.token_cord_for_image[this.other_entity_ids[index][0]].box[1];
+        if (x2 < this.token_cord_for_image[this.other_entity_ids[index][i]].box[2])
+          x2 = this.token_cord_for_image[this.other_entity_ids[index][i]].box[2];
+        if (y2 < this.token_cord_for_image[this.other_entity_ids[index][i]].box[3])
+          y2 = this.token_cord_for_image[this.other_entity_ids[index][i]].box[3];
+      }
+    }
+    if (x != 99999) 
+    {
+      this.display_entity_rect_ref.nativeElement.style.x = x;
+      this.display_entity_rect_ref.nativeElement.style.y = y;
+
+      this.display_entity_rect_ref.nativeElement.style.height = y2 - y;
+      this.display_entity_rect_ref.nativeElement.style.width = x2 - x;
+
+      //connecting-line stuff
+
+      if (this.entity_connector_line != undefined) 
+      {
+        this.entity_connector_line.remove();
+        this.entity_connector_line = undefined;
+      }
+
+      this.entity_connector_line = new LeaderLine(entity_ref,this.display_entity_rect_ref.nativeElement);
+      this.entity_connector_line.size = 2.75;
+      this.entity_connector_line.dash = true;
+      this.entity_connector_line.path = 'grid';
+      this.entity_connector_line.color = '#39a87a';
+    }
+  }
+
+  entity_line_adjuster()
+  {
+    if(this.entity_connector_line!=undefined)
+    {
+      this.entity_connector_line.position();
+    }
+  }
 
   save_all_data(condition: number) 
   {
@@ -1138,130 +1270,4 @@ export class EditingPageComponent implements AfterViewInit
     this.router.navigateByUrl('/batches');
   }
 
-
-  entity_click(type: string, index: number, entity_ref: any)
-  {
-    var x = 99999,
-      y = 99999,
-      x2 = -1,
-      y2 = -1;
-    if (type == 'q') 
-    {
-      for (let i = 0; i < this.question_entity_ids[index].length; i++) 
-      {
-        if(x>this.token_cord_for_image[this.question_entity_ids[index][i]].box[0])
-          x=this.token_cord_for_image[this.question_entity_ids[index][i]].box[0];
-        if(y>this.token_cord_for_image[this.question_entity_ids[index][i]].box[1])
-          y=this.token_cord_for_image[this.question_entity_ids[index][0]].box[1];
-        if(x2<this.token_cord_for_image[this.question_entity_ids[index][i]].box[2])
-          x2 =this.token_cord_for_image[this.question_entity_ids[index][i]].box[2];
-        if(y2 <this.token_cord_for_image[this.question_entity_ids[index][i]].box[3])
-          y2 =this.token_cord_for_image[this.question_entity_ids[index][i]].box[3];
-      }
-    }
-    else if (type == 'a') 
-    {
-      for (let i = 0; i < this.answer_entity_ids[index].length; i++) 
-      {
-        if(x>this.token_cord_for_image[this.answer_entity_ids[index][i]].box[0])
-          x = this.token_cord_for_image[this.answer_entity_ids[index][i]].box[0];
-        if(y>this.token_cord_for_image[this.answer_entity_ids[index][i]].box[1])
-          y=this.token_cord_for_image[this.answer_entity_ids[index][0]].box[1];
-        if(x2<this.token_cord_for_image[this.answer_entity_ids[index][i]].box[2])
-          x2 =this.token_cord_for_image[this.answer_entity_ids[index][i]].box[2];
-        if(y2<this.token_cord_for_image[this.answer_entity_ids[index][i]].box[3])
-          y2=this.token_cord_for_image[this.answer_entity_ids[index][i]].box[3];
-      }
-    }
-    else if (type == 'h') 
-    {
-      for (let i = 0; i < this.header_entity_ids[index].length; i++)
-      {
-        if (x > this.token_cord_for_image[this.header_entity_ids[index][i]].box[0])
-          x = this.token_cord_for_image[this.header_entity_ids[index][i]].box[0];
-        if (y > this.token_cord_for_image[this.header_entity_ids[index][i]].box[1])
-          y = this.token_cord_for_image[this.header_entity_ids[index][0]].box[1];
-        if (x2 < this.token_cord_for_image[this.header_entity_ids[index][i]].box[2])
-          x2 = this.token_cord_for_image[this.header_entity_ids[index][i]].box[2];
-        if(y2 < this.token_cord_for_image[this.header_entity_ids[index][i]].box[3])
-          y2 =this.token_cord_for_image[this.header_entity_ids[index][i]].box[3];
-      }
-    }
-    else
-    {
-      for (let i = 0; i < this.other_entity_ids[index].length; i++) 
-      {
-        if (x > this.token_cord_for_image[this.other_entity_ids[index][i]].box[0])
-          x = this.token_cord_for_image[this.other_entity_ids[index][i]].box[0];
-        if (y > this.token_cord_for_image[this.other_entity_ids[index][i]].box[1])
-          y = this.token_cord_for_image[this.other_entity_ids[index][0]].box[1];
-        if (x2 < this.token_cord_for_image[this.other_entity_ids[index][i]].box[2])
-          x2 = this.token_cord_for_image[this.other_entity_ids[index][i]].box[2];
-        if (y2 < this.token_cord_for_image[this.other_entity_ids[index][i]].box[3])
-          y2 = this.token_cord_for_image[this.other_entity_ids[index][i]].box[3];
-      }
-    }
-    if (x != 99999) 
-    {
-      this.display_entity_rect_ref.nativeElement.style.x = x;
-      this.display_entity_rect_ref.nativeElement.style.y = y;
-
-      this.display_entity_rect_ref.nativeElement.style.height = y2 - y;
-      this.display_entity_rect_ref.nativeElement.style.width = x2 - x;
-
-      //connecting-line stuff
-
-      if (this.entity_connector_line != undefined) 
-      {
-        this.entity_connector_line.remove();
-        this.entity_connector_line = undefined;
-      }
-
-      this.entity_connector_line = new LeaderLine(entity_ref,this.display_entity_rect_ref.nativeElement);
-      this.entity_connector_line.size = 2.75;
-      this.entity_connector_line.dash = true;
-      this.entity_connector_line.path = 'grid';
-      this.entity_connector_line.color = '#39a87a';
-    }
-  }
-
-  entity_line_adjuster()
-  {
-    if(this.entity_connector_line!=undefined)
-    {
-      this.entity_connector_line.position();
-    }
-  }
-
-  display_category_label(type:string)
-  {
-    if(type=='q')
-    {
-      if(this.display_question==0) 
-       this.display_question=1;
-      else
-      this.display_question=0; 
-    }
-    else if(type=='a')
-    {
-      if(this.display_answer==0) 
-       this.display_answer=1;
-      else
-      this.display_answer=0;
-    }
-    else if(type=='h')
-    {
-      if(this.display_header==0) 
-       this.display_header=1;
-      else
-      this.display_header=0;
-    }
-    else
-    {
-      if(this.display_other==0) 
-       this.display_other=1;
-      else
-      this.display_other=0;
-    }
-  }
 }
