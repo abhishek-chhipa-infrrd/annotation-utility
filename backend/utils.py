@@ -161,8 +161,12 @@ def push_json_data_in_db(batch_id, db):
 
 def transform_data(file_data,checkbox_data):
         
+        # print(checkbox_data['questions'])
+        # print(file_data[103])
+        # print(file_data[38])
         form = []
-        question = checkbox_data['questions'][0]['token_indexes']
+        e_check = {}
+        # print("###########",len(e_check)
         for i in range(len(file_data)): 
             
             data = {
@@ -177,9 +181,12 @@ def transform_data(file_data,checkbox_data):
                         "id" : i
                   }
             
-            if i in question:
-                data["label"] = 'checkbox_question'      
-           
+            for l in range(len(checkbox_data['questions'])):
+               question = checkbox_data['questions'][l]['token_indexes']
+               if i in question:
+                    data["label"] = 'checkbox_question'      
+                    # print(data)
+            
             form.append(data) 
            
                  
@@ -233,27 +240,68 @@ def transform_data(file_data,checkbox_data):
                             "text": file_data[checkbox_data['checkboxes'][j]['token_indexes'][k]][0]
                             
                         })
-                        form.pop()
-                        if (_id - k) in question:
-                            entity['question_id'] = (_id - k) 
-                            checkbox['question_id'] = (_id - k)
-                    # print(text)
-                    # print(words) 
-                      
+                        for f in form[:]:
+                            if f['text'] == file_data[checkbox_data['checkboxes'][j]['token_indexes'][k]][0]:
+                                 form.remove(f)
+                        
+                  
                     entity['text'] = text
                     entity['words'] = words
-                    # print(entity)
-                    form.append(entity)
+                    
+                    # print(checkbox_data['checkboxes'][j]['question_id'])
+                    for t in range(len(checkbox_data['questions'])):
+                      if checkbox_data['checkboxes'][j]['question_id'] == checkbox_data['questions'][t]['id']:
+                        #   print(checkbox_data['questions'][t]['token_indexes'])
+                          checkbox['question_id'] = checkbox_data['questions'][t]['token_indexes'][0]
+                          entity['question_id'] = checkbox_data['questions'][t]['token_indexes'][0]
+                          checkbox['question_ids'] = checkbox_data['questions'][t]['token_indexes']
+                          entity['question_ids'] = checkbox_data['questions'][t]['token_indexes']
+                          
+                          e = {
+                                    "box":[file_data[checkbox_data['questions'][t]['token_indexes'][0]][1]['tl']['x'],
+                                        file_data[checkbox_data['questions'][t]['token_indexes'][0]][1]['tl']['y'],
+                                        file_data[checkbox_data['questions'][t]['token_indexes'][-1]][1]['br']['x'],
+                                        file_data[checkbox_data['questions'][t]['token_indexes'][-1]][1]['br']['y']],
+                                    "label":"checkbox_question",
+                                    "linking":[],
+                                    "id" : checkbox_data['questions'][t]['token_indexes'][0],
+                                    "question_id":"null"
+                              }
+                          
+                        #   if e_check not in form:
+                                # print("### yes")
+                          text = ""
+                          words = []
+                          for u in range(len(checkbox_data['questions'][t]['token_indexes'])):
+                                    #   rem.add(file_data[checkbox_data['questions'][t]['token_indexes'][u]][0])
+                                    #   print(file_data[checkbox_data['questions'][t]['token_indexes'][u]][0])
+                                      text = text + " " +file_data[checkbox_data['questions'][t]['token_indexes'][u]][0]
+                                      words.append({
+                                          "box":[
+                                          file_data[checkbox_data['questions'][t]['token_indexes'][u]][1]['tl']['x'],
+                                          file_data[checkbox_data['questions'][t]['token_indexes'][u]][1]['tl']['y'],
+                                          file_data[checkbox_data['questions'][t]['token_indexes'][u]][1]['br']['x'],
+                                          file_data[checkbox_data['questions'][t]['token_indexes'][u]][1]['br']['y']
+                                          ],
+                                          "text": file_data[checkbox_data['questions'][t]['token_indexes'][u]][0]
+                                        
+                                      })
+                                      for f in form[:]:
+                                          if f['text'] == file_data[checkbox_data['questions'][t]['token_indexes'][u]][0]:
+                                              form.remove(f)
+                                    
+                                    
+                                    
+                          e['text'] = text
+                          e['words'] = words
+                          if e not in form:
+                              form.append(e)
+                              e_check = e
+                                        
+                    form.append(entity) 
                     form.append(checkbox)
-                     
                        
-            
-            
-            
-                
-        # print(form[28])
-        # print(form[29])  
-             
+        
         return form        
     
 def retransform_checkbox_data(data):
