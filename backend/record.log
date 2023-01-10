@@ -93,3 +93,141 @@
 2023-01-10 19:34:20,650 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:34:20] "GET /pages/7d3e3c34-e401-4791-8da0-92d0ff2f67e4 HTTP/1.1" 200 -
 2023-01-10 19:34:21,519 INFO api : Returning batch data
 2023-01-10 19:34:21,520 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:34:21] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 19:57:19,652 WARNING api : Cannot connect to database: No replica set members match selector "Primary()", Timeout: 0.1s, Topology Description: <TopologyDescription id: 63bd75c7c68b96d17be15ffd, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-emjtlvl-shard-00-00.p6bfznx.mongodb.net', 27017) server_type: RSSecondary, rtt: 0.06059276899759425>, <ServerDescription ('ac-emjtlvl-shard-00-01.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-emjtlvl-shard-00-02.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+2023-01-10 19:57:19,667 INFO werkzeug : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-01-10 19:57:19,667 INFO werkzeug : [33mPress CTRL+C to quit[0m
+2023-01-10 19:57:19,668 INFO werkzeug :  * Restarting with stat
+2023-01-10 19:57:20,258 WARNING api : Cannot connect to database: No replica set members match selector "Primary()", Timeout: 0.1s, Topology Description: <TopologyDescription id: 63bd75c75d42b3ef8bf576a8, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-emjtlvl-shard-00-00.p6bfznx.mongodb.net', 27017) server_type: RSSecondary, rtt: 0.061083666998456465>, <ServerDescription ('ac-emjtlvl-shard-00-01.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-emjtlvl-shard-00-02.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+2023-01-10 19:57:20,276 WARNING werkzeug :  * Debugger is active!
+2023-01-10 19:57:20,276 INFO werkzeug :  * Debugger PIN: 144-472-661
+2023-01-10 19:57:32,786 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:32] "GET / HTTP/1.1" 200 -
+2023-01-10 19:57:32,828 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:32] "GET /static/main.1e2b1936c4b10ade.js HTTP/1.1" 200 -
+2023-01-10 19:57:32,878 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:32] "GET /static/polyfills.ede7e43d0b2ceb41.js HTTP/1.1" 200 -
+2023-01-10 19:57:32,928 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:32] "GET /static/runtime.fc18dfcebd27889e.js HTTP/1.1" 200 -
+2023-01-10 19:57:32,932 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:32] "GET /static/styles.6860303216e67db0.css HTTP/1.1" 200 -
+2023-01-10 19:57:33,072 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:33] "GET /static/scripts.7022f9d4d9466d1a.js HTTP/1.1" 200 -
+2023-01-10 19:57:33,171 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:33] "GET /static/GT-Walsheim-Regular.663c4567ce7d3df3.otf HTTP/1.1" 200 -
+2023-01-10 19:57:33,422 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:33] "GET /static/favicon.ico HTTP/1.1" 200 -
+2023-01-10 19:57:39,663 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:39] "OPTIONS /login HTTP/1.1" 200 -
+2023-01-10 19:57:43,719 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:57:43] "[36mGET /static/styles.6860303216e67db0.css HTTP/1.1[0m" 304 -
+2023-01-10 19:59:23,765 INFO werkzeug :  * Detected change in '/home/vulcan/Documents/GitHub/annotation-utility/backend/config.py', reloading
+2023-01-10 19:59:24,309 INFO werkzeug :  * Restarting with stat
+2023-01-10 19:59:24,985 WARNING api : Cannot connect to database: No replica set members match selector "Primary()", Timeout: 0.1s, Topology Description: <TopologyDescription id: 63bd7644de966bd2b03c696c, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-emjtlvl-shard-00-00.p6bfznx.mongodb.net', 27017) server_type: RSSecondary, rtt: 0.04966878399864072>, <ServerDescription ('ac-emjtlvl-shard-00-01.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-emjtlvl-shard-00-02.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+2023-01-10 19:59:25,005 WARNING werkzeug :  * Debugger is active!
+2023-01-10 19:59:25,007 INFO werkzeug :  * Debugger PIN: 144-472-661
+2023-01-10 19:59:35,511 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:35] "OPTIONS /login HTTP/1.1" 200 -
+2023-01-10 19:59:35,513 INFO api : Input credentials: {'email': 'user1@gmail.com', 'password': 'password@1'}
+2023-01-10 19:59:36,006 INFO api : Authentication Successful: Logging in user
+2023-01-10 19:59:36,007 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:36] "POST /login HTTP/1.1" 200 -
+2023-01-10 19:59:36,190 INFO api : Returning batch data
+2023-01-10 19:59:36,191 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:36] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 19:59:36,273 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:36] "[36mGET /image/dimg.png HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,432 INFO api : Returning document list in batch: batch 7d3e3c34-e401-4791-8da0-92d0ff2f67e4
+2023-01-10 19:59:39,433 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "GET /pages/7d3e3c34-e401-4791-8da0-92d0ff2f67e4 HTTP/1.1" 200 -
+2023-01-10 19:59:39,540 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0001092182 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,601 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00864736 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,679 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00839682 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,736 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00860012_00860014 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,796 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0012198579 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,848 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0071038188 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,852 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0013241396 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,862 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0060062160 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,904 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01074407 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:39,947 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:39] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01074585 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,052 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01077920 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,087 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2020050552_2020050553 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,113 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2063195254 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,139 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2064500982 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,181 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2065117402 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,189 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01073747 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,190 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2065162410_2411 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,231 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2074405457 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,274 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2075005024 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,299 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/512989563 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,300 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/514790001 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,306 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/1000805631 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,369 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/86483006 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,625 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/86230183_0186 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:40,680 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:40] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00866042 HTTP/1.1[0m" 304 -
+2023-01-10 19:59:41,764 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:41] "[33mGET /static/documents HTTP/1.1[0m" 404 -
+2023-01-10 19:59:48,358 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "GET / HTTP/1.1" 200 -
+2023-01-10 19:59:48,408 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/polyfills.ede7e43d0b2ceb41.js HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,410 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/runtime.fc18dfcebd27889e.js HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,411 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/main.1e2b1936c4b10ade.js HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,415 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/styles.6860303216e67db0.css HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,418 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/scripts.7022f9d4d9466d1a.js HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,431 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/GT-Walsheim-Regular.663c4567ce7d3df3.otf HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,731 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2023-01-10 19:59:48,761 INFO api : Returning batch data
+2023-01-10 19:59:48,762 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 19:59:48,841 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:48] "[36mGET /image/dimg.png HTTP/1.1[0m" 304 -
+2023-01-10 19:59:50,432 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 19:59:50] "[33mGET /static/batches HTTP/1.1[0m" 404 -
+2023-01-10 20:02:27,010 WARNING api : Cannot connect to database: No replica set members match selector "Primary()", Timeout: 0.1s, Topology Description: <TopologyDescription id: 63bd76fac26566424ba3d846, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-emjtlvl-shard-00-00.p6bfznx.mongodb.net', 27017) server_type: RSSecondary, rtt: 0.04598802500186139>, <ServerDescription ('ac-emjtlvl-shard-00-01.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-emjtlvl-shard-00-02.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+2023-01-10 20:02:27,025 INFO werkzeug : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2023-01-10 20:02:27,025 INFO werkzeug : [33mPress CTRL+C to quit[0m
+2023-01-10 20:02:27,026 INFO werkzeug :  * Restarting with stat
+2023-01-10 20:02:27,451 WARNING api : Cannot connect to database: No replica set members match selector "Primary()", Timeout: 0.1s, Topology Description: <TopologyDescription id: 63bd76fb143b9ea2a30145af, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-emjtlvl-shard-00-00.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-emjtlvl-shard-00-01.p6bfznx.mongodb.net', 27017) server_type: RSSecondary, rtt: 0.04010124799970072>, <ServerDescription ('ac-emjtlvl-shard-00-02.p6bfznx.mongodb.net', 27017) server_type: Unknown, rtt: None>]>
+2023-01-10 20:02:27,467 WARNING werkzeug :  * Debugger is active!
+2023-01-10 20:02:27,467 INFO werkzeug :  * Debugger PIN: 144-472-661
+2023-01-10 20:02:38,586 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "GET / HTTP/1.1" 200 -
+2023-01-10 20:02:38,667 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/runtime.fc18dfcebd27889e.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,668 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/polyfills.ede7e43d0b2ceb41.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,670 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/scripts.7022f9d4d9466d1a.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,671 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/styles.6860303216e67db0.css HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,677 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/GT-Walsheim-Regular.663c4567ce7d3df3.otf HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,682 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/main.1e2b1936c4b10ade.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:38,994 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:38] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2023-01-10 20:02:39,049 INFO api : Returning batch data
+2023-01-10 20:02:39,049 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:39] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 20:02:39,125 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:39] "[36mGET /image/dimg.png HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,004 INFO api : Returning document list in batch: batch 7d3e3c34-e401-4791-8da0-92d0ff2f67e4
+2023-01-10 20:02:42,004 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "GET /pages/7d3e3c34-e401-4791-8da0-92d0ff2f67e4 HTTP/1.1" 200 -
+2023-01-10 20:02:42,385 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0012198579 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,399 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0060062160 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,434 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0071038188 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,475 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00839682 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,486 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00860012_00860014 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,529 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00866042 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,544 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/00864736 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,573 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01073747 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,602 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01074407 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,616 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01074585 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,663 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/1000805631 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,668 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/01077920 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,713 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2020050552_2020050553 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,726 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2063195254 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,753 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2064500982 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,786 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2065117402 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,793 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2074405457 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,804 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0001092182 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,834 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/512989563 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,854 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2075005024 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,873 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/514790001 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,913 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/86230183_0186 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:42,937 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:42] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/86483006 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:43,086 INFO api : Returning batch data
+2023-01-10 20:02:43,086 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:43] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 20:02:43,097 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:43] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/2065162410_2411 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:43,583 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:43] "[36mGET /7d3e3c34-e401-4791-8da0-92d0ff2f67e4/0013241396 HTTP/1.1[0m" 304 -
+2023-01-10 20:02:43,723 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:43] "[33mGET /static/batches HTTP/1.1[0m" 404 -
+2023-01-10 20:02:47,387 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:47] "[33mGET /static/batches HTTP/1.1[0m" 404 -
+2023-01-10 20:02:52,009 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "GET / HTTP/1.1" 200 -
+2023-01-10 20:02:52,041 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/runtime.fc18dfcebd27889e.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,046 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/polyfills.ede7e43d0b2ceb41.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,053 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/main.1e2b1936c4b10ade.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,057 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/scripts.7022f9d4d9466d1a.js HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,057 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/styles.6860303216e67db0.css HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,219 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/GT-Walsheim-Regular.663c4567ce7d3df3.otf HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,274 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2023-01-10 20:02:52,352 INFO api : Returning batch data
+2023-01-10 20:02:52,353 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 20:02:52,430 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:52] "[36mGET /image/dimg.png HTTP/1.1[0m" 304 -
+2023-01-10 20:02:59,625 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:59] "OPTIONS /login HTTP/1.1" 200 -
+2023-01-10 20:02:59,628 INFO api : Input credentials: {'email': 'user1@gmail.com', 'password': 'password@1'}
+2023-01-10 20:02:59,698 INFO api : Authentication Successful: Logging in user
+2023-01-10 20:02:59,699 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:59] "POST /login HTTP/1.1" 200 -
+2023-01-10 20:02:59,867 INFO api : Returning batch data
+2023-01-10 20:02:59,867 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:02:59] "GET /batches/63a18ee38ac58456ecea5b03 HTTP/1.1" 200 -
+2023-01-10 20:03:02,450 INFO werkzeug : 127.0.0.1 - - [10/Jan/2023 20:03:02] "[33mGET /static/batches HTTP/1.1[0m" 404 -

@@ -4,7 +4,7 @@ import os
 import shutil
 from zipfile import ZIP_DEFLATED, ZipFile
 from bson import ObjectId
-from flask import Flask, Response, jsonify, make_response, request, send_file
+from flask import Flask, Response, jsonify, make_response, render_template, request, send_file
 from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import pymongo
@@ -477,7 +477,9 @@ def create_team():
             mimetype="application/json"
         )   
          
-                  
+@app.route('/', methods=['GET'])
+def root():
+    return render_template('index.html')      
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
