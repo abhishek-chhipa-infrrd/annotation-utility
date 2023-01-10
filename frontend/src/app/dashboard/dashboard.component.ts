@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   batchID:any;
   apiBatchdata:any;
   userId:string = '';
-  thumbnail = "/assets/dimg.png"
+  thumbnail = "https://drive.google.com/drive/folders/1F-Bm8cRIzoOAIwOFk91urmeWgCSevTXf"
   download_icon = faDownload;
   delete_icon = faTrash;
   delete_batch_Id:any

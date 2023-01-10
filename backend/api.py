@@ -4,7 +4,7 @@ import os
 import shutil
 from zipfile import ZIP_DEFLATED, ZipFile
 from bson import ObjectId
-from flask import Flask, Response, jsonify, make_response, request, send_file
+from flask import Flask, Response, jsonify, make_response, request, send_file,render_template
 from flask_cors import CORS
 from flask_login import (
     LoginManager,
@@ -53,7 +53,7 @@ login_manager.session_protection = "strong"
 
 cors = CORS(
     app,
-    resources={r"*": {"origins": "http://localhost:4200"}},
+    resources={r"*": {"origins": "http://localhost:5000"}},
     supports_credentials=True,
 )
 
@@ -490,7 +490,12 @@ def delete_user():
                 }),
             status=500,
             mimetype="application/json"
-        )           
+        ) 
+
+
+@app.route('/', methods=['GET'])
+def root():
+    return render_template('index.html') # Return index.html 
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
