@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http'
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { RootService } from './root.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', observe: 'response'})
@@ -11,12 +12,13 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class LoginService {
-    URL = "http://127.0.0.1:5000"
+export class LoginService extends RootService {
     isLoggedIn = false;
     CSRFToken = ''
     
-    constructor(private http:HttpClient, private router: Router) {}
+    constructor(private http:HttpClient, private router: Router) {
+      super();
+    }
 
     getsession(){
       return this.http.get(this.URL + '/getsession').subscribe(

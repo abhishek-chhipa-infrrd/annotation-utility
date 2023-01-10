@@ -18,11 +18,11 @@ import utils
 from flask_swagger_ui import get_swaggerui_blueprint
 import uuid
 from flask_principal import Principal, Permission, RoleNeed, Identity
+from flask import Flask,render_template
 
 app = Flask(__name__)
 
-app.config['ENV'] = "development"
-# print(app.config["ENV"])
+app.config['ENV'] = "dev"
 
 if app.config['ENV'] == "production":
     app.config.from_object("config.ProductionConfig")
@@ -38,14 +38,13 @@ try:
         serverSelectionTimeoutMS=100
     )
 
-    # print('Connected')
     db = mongo[app.config['DB_NAME']]
     users = db.Users
-    # print('Connected')
-    mongo.server_info()
+    print('Connected')
+    print(mongo.server_info())
 
-except:
-    print("Error - cannot connect to db")
+except Exception as e:
+    print(e)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -53,7 +52,7 @@ login_manager.session_protection = "strong"
 
 cors = CORS(
     app,
-    resources={r"*": {"origins": "http://localhost:4200"}},
+    resources={r"*": {"origins": "http://localhost:8008"}},
     supports_credentials=True,
 )
 
@@ -81,7 +80,7 @@ def user_loader(id):
     if user:
         user_model = User()
         user_model.id = user["_id"]
-        
+
         # Identify and set user role
         role = user['role']
         identity = Identity(user["_id"])
@@ -99,6 +98,7 @@ def login():
     password = data.get("password")
 
     user_query = users.find_one({"email": email, "password": password})
+    print(user_query)
     if user_query:
         user_model = User()
         user_model.id = user_query['_id']
@@ -164,17 +164,17 @@ def get_kvp_data_one(id):
 def get_kvp_data(batchId, docId):
 
     try:
-        
+
         data = list(db.pages.find(
             {"documentId": str(docId), "batchId": str(batchId)}))
 
-        
-        if data[0]['type'] == "checkboxes":    
+
+        if data[0]['type'] == "checkboxes":
             if str(data[0]["isCorrected"]).lower() == 'true':
                 # print(data[0]['correctedData']['ocrData']['form'])
                 form = utils.transform_data_for_corrected_data(data[0]['correctedData']['ocrData'])
                 data[0]['correctedData']['ocrData'] = form
-                
+
             else:
                 form = utils.transform_data(data[0]['Data']['ocrData'],data[0]['Data']['checkboxData'])
                 data[0]['Data']['ocrData'] = form
@@ -191,31 +191,31 @@ def get_kvp_data(batchId, docId):
 @app.route('/<batchId>/<image>', methods=['GET'])
 @login_required
 def myapp(batchId, image):
-  
+
     img_file = os.path.join(app.config['IMAGE_PATH'],f'{batchId}/{image}.jpg')
     no_img =  os.path.join(app.config['IMAGE_PATH'],f'no-preview.png')
     # print("###############",img_file)
     if os.path.isfile(img_file):
         return send_file(img_file)
-    
+
     elif os.path.isfile(img_file.replace('jpg','png')):
         return send_file(img_file.replace('jpg','png'))
-    
+
     elif os.path.isfile(img_file.replace('jpg','jpeg')):
         return send_file(img_file.replace('jpg','jpeg'))
-    
+
     elif os.path.isfile(img_file.replace('jpg','jfif')):
         return send_file(img_file.replace('jpg','jfif'))
-    
+
     elif os.path.isfile(img_file.replace('jpg','pjpeg')):
         return send_file(img_file.replace('jpg','pjpeg'))
-    
+
     elif os.path.isfile(img_file.replace('jpg','pjp')):
         return send_file(img_file.replace('jpg','pjp'))
-    
+
     elif os.path.isfile(img_file.replace('jpg','webp')):
         return send_file(img_file.replace('jpg','webp'))
-    
+
     else:
         return send_file(no_img)
 
@@ -228,23 +228,23 @@ def put_ocr_data():
 
     try:
         raw_data = request.json
-        
-        
+
+
         if raw_data["type"] == "checkboxes":
             data = raw_data['correctedData']['ocrData']
             # print("inside****")
             # print(data)
-            transformed_data = utils.retransform_data(data)   
+            transformed_data = utils.retransform_data(data)
             raw_data['correctedData']['ocrData'] = transformed_data
-        
+
         db.pages.update_one({"_id": ObjectId(raw_data['_id'])}, {"$set": {
-            
+
             "isCorrected": raw_data['isCorrected'],
             # "imageStatus": raw_data['imageStatus'],
             "correctedData": raw_data['correctedData'],
             "correctedBy": raw_data['correctedBy'],
             "correctedOn": raw_data['correctedOn']
-            
+
         }})
 
         return Response(
@@ -277,7 +277,7 @@ def send_zip_file():
         # print('type: ', type)
         # print(data)
         for batch in data:
-            
+
             # print(batch['correctedData']['kvpData'])
             batch['_id'] = str(batch['_id'])
             if type == 'checkboxes':
@@ -288,10 +288,10 @@ def send_zip_file():
                    outfile.write(json_object)
                 with open(""+batch['document_name']+".json", "w") as outfile:
                    outfile.write(json_object2)
-                
+
             elif type == 'fields':
                 name = batch['document_name']
-                json_object = json.dumps(batch['correctedData']['kvpData'])    
+                json_object = json.dumps(batch['correctedData']['kvpData'])
                 with open(""+name+".json", "w") as outfile:
                    outfile.write(json_object)
 
@@ -336,8 +336,8 @@ def send_zip_file():
             status=500,
             mimetype="application/json"
         )
-        
-        
+
+
 #################################################################
 #################################################################
 ################ Delete Btaches #################################
@@ -349,7 +349,7 @@ def delete_batches(id):
     try:
         dbResponse = db.batches.delete_one({"batchId": str(id)})
         dbResponse2 = db.pages.delete_many({"batchId": str(id)})
-        
+
         path = os.path.join(app.config['IMAGE_PATH'] ,f'{str(id)}')
         shutil.rmtree(path)
         return Response(
@@ -388,11 +388,11 @@ def upload_zip():
 
             batch_id = uuid.uuid4()
             # print("***id****",batch_id)
-            
+
             utils.extract_file(zip_file,db,batch_id,app.config['IMAGE_PATH'])
             utils.push_json_data_in_db(batch_id, db,app.config['IMAGE_PATH'] )
             utils.remove_filesystem_folder(batch_id,app.config['IMAGE_PATH'])
-            
+
         return Response(
             response=json.dumps({"Message": "File Uploaded Successfully"}),
             status=200,
@@ -402,7 +402,6 @@ def upload_zip():
     except Exception as ex:
         print(ex)
         return Response(
-            response=json.dumps({"Message": "File cannot be Uploaded "}),
             status=500,
             mimetype="application/json"
         )
@@ -418,7 +417,6 @@ def get_users():
         return Response(response=json.dumps(data, default=str),
                         status=200,
                         mimetype="application/json")
-
     except Exception as ex:
         print(ex)
         return Response(
@@ -492,5 +490,9 @@ def delete_user():
             mimetype="application/json"
         )           
 
+@app.route("/", methods=["GET"])
+def root():
+    return render_template("index.html") # Return index.html
+
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=8008)

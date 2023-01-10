@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
+import { RootService } from './root.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UploadFileService {
-
-  baseApiUrl = "http://127.0.0.1:5000/"
+export class UploadFileService extends RootService{
   name:any;
-  constructor(private http:HttpClient, private tokenStorageService: TokenStorageService) { }
+  constructor(private http:HttpClient, private tokenStorageService: TokenStorageService) {
+    super();
+  }
 
   upload(file:File,batch_name:any,user_id:any){
     // console.log("service"+user_id)
@@ -18,6 +19,6 @@ export class UploadFileService {
     formData.append("zip_file", file);
     formData.append("batch_name", batch_name)
     formData.append("user_id", user_id)
-    return this.http.post(this.baseApiUrl+'uploads',formData, {headers: headers})
+    return this.http.post(this.URL+'uploads',formData, {headers: headers})
   }
 }

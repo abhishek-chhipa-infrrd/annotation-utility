@@ -15,8 +15,7 @@ export class DashboardComponent implements OnInit {
   batchID:any;
   apiBatchdata:any;
   userId:string = '';
-  // thumbnail="https://cdn-icons-png.flaticon.com/512/3767/3767084.png";
-  thumbnail = "../../assets/dimg.png"
+  thumbnail = "/assets/dimg.png"
   download_icon = faDownload;
   delete_icon = faTrash;
   delete_batch_Id:any
