@@ -4,7 +4,7 @@ import os
 import shutil
 from zipfile import ZIP_DEFLATED, ZipFile
 from bson import ObjectId
-from flask import Flask, Response, jsonify, make_response, request, send_file
+from flask import Flask, Response, jsonify, make_response, request, send_file,render_template,redirect, url_for
 from flask_cors import CORS
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user
 import pymongo
@@ -71,6 +71,48 @@ swaggerui_blueprint = get_swaggerui_blueprint(
     }
 )
 app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+@app.route("/")
+def hello_world():
+    return render_template('index.html')
+
+@app.route("/static/batches")
+def batches():
+    return render_template('index.html')
+
+@app.route("/static/login")
+def login_route():
+    return render_template('index.html')
+
+@app.route("/static/documents")
+def documents():
+    return render_template('index.html')
+
+@app.route("/static/editing-page")
+def editing_page():
+    return render_template('index.html')
+
+@app.route("/static/admin")
+def admin():
+    return render_template('index.html')
+
+@app.route("/static/admin/batches")
+def admin_batches():
+    return render_template('index.html')
+
+
+@app.route("/static/admin/users")
+def admin_users():
+    return render_template('index.html')
+
+@app.route("/static/admin/create_user")
+def admin_create_user():
+    return render_template('index.html')
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('batches'))
 
 @login_manager.user_loader
 def user_loader(id):
@@ -445,7 +487,7 @@ def delete_user(id):
             mimetype="application/json"
         ) 
         
-@app.route("/create_team", methods=["POST"])
+@app.route("/create_team", methods=["POST","PUT"])
 def create_team():
     try:
         # print(request.form['name'])
@@ -480,4 +522,4 @@ def create_team():
                   
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000,use_reloader=False)
