@@ -77,7 +77,6 @@ def root():
     return render_template('index.html')
 
 @app.route("/static/batches")
-@login_required
 def batches():
     return render_template('index.html')
 
@@ -86,37 +85,27 @@ def login_route():
     return render_template('index.html')
 
 @app.route("/static/documents")
-@login_required
 def documents():
     return render_template('index.html')
 
 @app.route("/static/editing-page")
-@login_required
 def editing_page():
     return render_template('index.html')
 
 @app.route("/static/admin")
-@login_required
-@admin_permission.require()
 def admin():
     return render_template('index.html')
 
 @app.route("/static/admin/batches")
-@login_required
-@admin_permission.require()
 def admin_batches():
     return render_template('index.html')
 
 
 @app.route("/static/admin/users")
-@login_required
-@admin_permission.require()
 def admin_users():
     return render_template('index.html')
 
 @app.route("/static/admin/create_user")
-@login_required
-@admin_permission.require()
 def admin_create_user():
     return render_template('index.html')
 
@@ -259,7 +248,10 @@ def get_document_data(batchId, docId):
 def send_image_file(batchId, image):
   
     img_file = os.path.join(app.config['IMAGE_PATH'],f'{batchId}/{image}.jpg')
-    no_img =  os.path.join(app.config['IMAGE_PATH'],f'no-preview.png')
+    
+    root_path = os.getcwd()
+    no_img = root_path+f'/static/images/no-preview.png'
+    # no_img =  os.path.join(app.config['IMAGE_PATH'],f'no-preview.png')
     # print("###############",img_file)
     send_data_file = utils.get_images(img_file,no_img)
     return send_data_file
