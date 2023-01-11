@@ -465,10 +465,6 @@ checkbox_label_initialization()
           }
         }
       }
-
-      // console.log(this.options_string);
-      // console.log(this.options_string_id);
-      
       
     }
 
@@ -500,7 +496,7 @@ checkbox_label_initialization()
 
             this.actual_checkbox_id[question_index] = [l2];
 
-            if(this.api_result[i].check=='unchecked')
+            if(this.api_result[i].check=='unchecked' || this.api_result[i].check=='Unchecked')
             this.actual_checkbox_value[question_index] = ['Unchecked'];
 
             else
@@ -516,7 +512,7 @@ checkbox_label_initialization()
 
             let l2 = t2[0];
 
-            if(this.api_result[i].check=='unchecked')
+            if(this.api_result[i].check=='unchecked' || this.api_result[i].check=='Unchecked')
             this.actual_checkbox_value[question_index].push('Unchecked');
 
             else
@@ -794,8 +790,7 @@ image_zoom_out()
       }
     }
 
-    for(let i = 0; i<this.checkbox_question_id.length;i++)
-    {
+    for(let i = 0; i<this.checkbox_question_id.length;i++)   {
       for(let j=0; j<this.checkbox_question_id[i].length; j++)
       {
         if(token_id == this.checkbox_question_id[i][j])
@@ -2314,37 +2309,42 @@ save_all_data(condition: number)
 
   for(let z = 0; z<this.checkbox_question_id.length; z++)
   {
-    for(let z2=0; z2 < this.options_string_id[z].length; z2++)
+    for(let z2 = 0; z2 < this.options_string_id[z].length; z2++)
     {
       let token_index = [];
       
       let token_label = this.actual_checkbox_value[z][z2];
+
+      let obj;
      
       for(let z3 = 0; z3 < this.options_string_id[z][z2].length; z3++)
       {
         token_index.push(this.options_string_id[z][z2][z3]);
       }
       
-      if(this.checkbox_question_string[z] == "")
-      {
-        this.token_cord_for_cal.push({
-          "box":[0, 0, 0, 0],
-          "text":' ',
-          "id":this.token_cord_for_cal.length
-        });
+      // if(this.checkbox_question_string[z] == "")
+      // {
+      //   obj = {
+      //     'tl': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[0], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[1]},
+      //     'br': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[2], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[3]},
+      //     'label': token_label,
+      //     'confidence': 1.0,
+      //     'token_indexes': token_index,
+      //     'question_id': null
+      //   }
+      // }
 
-        this.checkbox_question_string[z] = " ";
-        this.checkbox_question_id[z].push(this.token_cord_for_cal.length-1);
-      }
-
-      let obj = {
-        'tl': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[0], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[1]},
-        'br': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[2], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[3]},
-        'label': token_label,
-        'confidence': 1.0,
-        'token_indexes': token_index,
-        'question_id': z
-      }
+      // else
+      // {
+        obj = {
+          'tl': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[0], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[1]},
+          'br': { 'x': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[2], 'y': this.token_cord_for_cal[this.actual_checkbox_id[z][z2]].box[3]},
+          'label': token_label,
+          'confidence': 1.0,
+          'token_indexes': token_index,
+          'question_id': z
+        }
+      // }
       
       checkboxes.push(obj);
     }
